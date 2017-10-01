@@ -1,28 +1,101 @@
-.App {
+/*** LANDING PAGE ***/
+
+.landing-page header {
+  top: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  height: 76px;
+  z-index: 99;
+  font-size: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #d0d4d9;
+  -webkit-box-shadow: 0px 1px 1px #d0d4d9;
+  box-shadow: 0px 1px 1px #d0d4d9;
+  line-height: 26px;
+}
+
+.landing-page header .logo-container {
   text-align: center;
+  margin: 15px auto;
+  height: 46px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.landing-page header .logo-container a {
+  width: 180px;
+  height: 46px;
+  display: inline-block;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.landing-page header .logo-container .logo-icon {
+  width: 46px;
+  height: 46px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.App-title {
-  font-size: 1.5em;
+.landing-page header .logo-container .logo-text {
+  height: 34px;
+  width: 120px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+  position: relative;
+  top: 2px;
 }
 
-.App-intro {
-  font-size: large;
+.landing-page .page-content {
+  text-align: center;
+  min-height: 425px;
+  margin-top: 126px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.landing-page .page-content .landing-img-container {
+  display: inline-block;
+  vertical-align: middle;
 }
+
+.landing-page .page-content .landing-img-container img {
+  width: 300px;
+  height: 300px;
+  margin-top: 80px;
+  margin-right: 100px;
+}
+
+.landing-page .page-content .form-container {
+  width: 350px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.landing-page .page-content .form-container .signin-form {
+
+}
+
+.landing-page .page-content .form-container .signin-form .form-header {
+  margin-bottom: 30px;
+}
+
+.landing-page .page-content .form-container .signin-form .form-header .title {
+  font-size: 18px;
+  margin: 0px;
+  text-align: left;
+}
+
+.landing-page .page-content .form-container .signin-form .form-header .subscript {
+  font-size: 13px;
+  text-align: right;
+  margin: 0px;
+}
+
+.landing-page .page-content .form-container .signin-form .form-body {
+
+}
+
+.landing-page .page-content .form-container .signin-form .form-body .form-group {
+  margin-bottom: 30px;
+}
+
+
+   
