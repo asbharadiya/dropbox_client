@@ -23,6 +23,11 @@ class Sidebar extends Component {
       								Files
       							</NavLink>
       						</li>
+                  <li>
+                    <NavLink to="/groups">
+                      Groups
+                    </NavLink>
+                  </li>
       					</ul>
       				</div>
       			</div>

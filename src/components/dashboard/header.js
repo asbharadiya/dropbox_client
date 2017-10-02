@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import { Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 
 class Header extends Component {
@@ -21,7 +20,7 @@ class Header extends Component {
       			</div>
       			<div className="topnav-container">
 	      			<Nav>
-				        <NavDropdown eventKey={1} title="User Name">
+				        <NavDropdown eventKey={1} title="User Name" id="user-dropdown">
 					        <MenuItem eventKey={1.1} onClick={()=>this.handleLink("settings")}>Settings</MenuItem>
 					        <MenuItem eventKey={1.2}>Logout</MenuItem>
 				        </NavDropdown>

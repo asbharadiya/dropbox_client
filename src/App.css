@@ -23,19 +23,17 @@ a:hover {
 }
 
 .btn-dropbox {
-  background-color: #007ee5;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#168add), to(#007ee5));
-  background-image: linear-gradient(#168add, #007ee5);
-  border: 1px solid #0c6ebe;
-  color: white;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 16px;
+  background-color: #0070E0;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0px 16px;
+  line-height: 32px;
+  border: 0px;
 }
 
 .btn-dropbox:hover {
-  background: -webkit-gradient(linear, left top, left bottom, from(#168eef), to(#007ee5));
-  background: linear-gradient(#168eef, #007ee5);
+  background-color: #007AF5;
 }
 
 /*LANDING PAGE*/
@@ -190,6 +188,7 @@ a:hover {
   left: 0px;
   height: 100vh;
   background: #F7F9FA;
+  z-index: 6;
 }
 
 .dashboard-page .sidebar-panel .sidebar-panel-container {
@@ -248,9 +247,11 @@ a:hover {
   position: fixed;
   left: 240px;
   right: 0px;
+  top: 0px;
   background: #fff;
   padding: 40px 40px 0 40px;
   height: 96px;
+  z-index: 5;
 }
 
 .dashboard-page .page-content header .page-title-container {
@@ -317,6 +318,136 @@ a:hover {
   padding: 9px 16px;
   outline: none;
 }
+
+.dashboard-page .page-content .inner-page-content {
+  padding-top: 96px;
+}
+
+.dashboard-page .page-content .inner-page-content.has-right-content {
+  display: flex;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content {
+  width: 240px;
+  padding-right: 40px;
+  flex: 0 0 240px;
+
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner {
+  position: fixed;
+  right: 40px;
+  width: 200px;
+  z-index: 4;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .btn-main {
+  width: 100%;
+  margin-top: 40px;
+}
+
+/*HOMEPAGE*/
     
+.dashboard-page .page-content .homepage {
+  padding-left: 40px;
+  padding-right: 40px;
+  flex: 1;
+} 
+
+.dashboard-page .page-content .homepage .home-section {
+  margin: 0 0 24px 0;
+} 
+
+.dashboard-page .page-content .homepage .home-section .section-header {
+  margin: 0;
+  padding: 0px;
+  font-weight: 400;
+  line-height: 40px;
+  font-size: 12px;
+  color: #637282;
+  border-bottom: solid 1px #E6E8EB;
+} 
+
+.dashboard-page .page-content .homepage .home-section .section-item {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #E6E8EB;
+  height: 64px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item .item-icon {
+  padding: 12px;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item .item-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item .item-content {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  overflow: hidden;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item .item-content .item-title {
+  display: block;
+  margin: 0px;
+  font-weight: 400;
+  color: #1B2733;
+  font-size: 14px;
+  line-height: normal;
+  text-align: left;
+  flex: 1 1 auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item:hover .item-content .item-title {
+  color: #0070E0;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item .item-content .item-star {
+  display: flex;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item .item-content .item-star button {
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  width: auto;
+  overflow: visible;
+  border-style: solid;
+  outline: 0;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item .item-content .item-star button.not-star {
+  opacity: 0;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item:hover .item-content .item-star button.not-star {
+  opacity: 1;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item .item-content .item-star button i {
+  width: 32px;
+  color: #0070E0;
+}
+
+.dashboard-page .page-content .homepage .home-section .section-item .item-options {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #1B2733;
+  margin-left: 10px;
+}    
 
    
