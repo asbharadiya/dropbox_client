@@ -6,10 +6,10 @@ class Dashboard extends Component {
   	render() {
     	return (
       		<div className="dashboard-page">
-      			<Header/>
       			<Sidebar/>
       			<div className="page-content">
-      				{this.props.children}
+      				<Header/>
+              {this.props.children}
       			</div>
       		</div>
     	);

@@ -1,0 +1,40 @@
+@media screen and (max-width: 767px) { 
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  
+}
+
+@media screen and (max-width: 991px) {
+	/*LANDING PAGE*/
+	.landing-page .page-content .landing-img-container img {
+    	width: 250px;
+    	height: 250px;
+  	}
+  	.landing-page .page-content .form-container {
+    	width: 300px;
+  	}
+  	/*DASHBOARD*/
+  	.dashboard-page .sidebar-panel {
+  		width: 200px;
+  	}
+  	.dashboard-page .page-content {
+  		padding-left: 200px;
+  	}
+  	.dashboard-page .page-content header {
+  		left: 200px;
+  	}
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media screen and (max-width: 1199px) {
+	
+}
+
+@media screen and (min-width: 1200px) {
+	
+}

@@ -1,4 +1,44 @@
-/*** LANDING PAGE ***/
+/*GLOBAL*/
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-size: 13px;
+  background-color: #fff;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #3d464d;
+}
+
+a {
+  color: #2895F1;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #2895F1;
+}
+
+.btn-dropbox {
+  background-color: #007ee5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#168add), to(#007ee5));
+  background-image: linear-gradient(#168add, #007ee5);
+  border: 1px solid #0c6ebe;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+}
+
+.btn-dropbox:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#168eef), to(#007ee5));
+  background: linear-gradient(#168eef, #007ee5);
+}
+
+/*LANDING PAGE*/
 
 .landing-page header {
   top: 0;
@@ -48,7 +88,11 @@
 .landing-page .page-content {
   text-align: center;
   min-height: 425px;
-  margin-top: 126px;
+  padding-bottom: 50px;
+}
+
+.landing-page .page-content .page-inner-content {
+  padding-top: 126px;
 }
 
 .landing-page .page-content .landing-img-container {
@@ -61,6 +105,7 @@
   height: 300px;
   margin-top: 80px;
   margin-right: 100px;
+  margin-bottom: 80px;
 }
 
 .landing-page .page-content .form-container {
@@ -84,7 +129,6 @@
 }
 
 .landing-page .page-content .form-container .signin-form .form-header .subscript {
-  font-size: 13px;
   text-align: right;
   margin: 0px;
 }
@@ -97,5 +141,182 @@
   margin-bottom: 30px;
 }
 
+.landing-page .page-content .form-container .signin-form .form-body .form-group.btn-container {
+  margin-bottom: 0px;
+  text-align: right;
+}
+
+.landing-page .page-content .form-container .signup-form {
+
+}
+
+.landing-page .page-content .form-container .signup-form .form-header {
+  margin-bottom: 30px;
+}
+
+.landing-page .page-content .form-container .signup-form .form-header .title {
+  font-size: 18px;
+  margin: 0px;
+  text-align: left;
+}
+
+.landing-page .page-content .form-container .signup-form .form-header .subscript {
+  text-align: right;
+  margin: 0px;
+}
+
+.landing-page .page-content .form-container .signup-form .form-body {
+
+}
+
+.landing-page .page-content .form-container .signup-form .form-body .form-group {
+  margin-bottom: 30px;
+}
+
+.landing-page .page-content .form-container .signup-form .form-body .form-group.btn-container {
+  margin-bottom: 0px;
+  text-align: right;
+}
+
+/*DASHBOARD*/
+.dashboard-page {
+
+}
+
+.dashboard-page .sidebar-panel {
+  width: 240px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  background: #F7F9FA;
+}
+
+.dashboard-page .sidebar-panel .sidebar-panel-container {
+  position: absolute;
+  top: 0;
+  bottom: 0px;
+  padding: 40px 40px 0 40px;
+  width: 100%;
+}
+
+.dashboard-page .sidebar-panel .sidebar-panel-container .logo-container {
+  margin-bottom: 24px;
+}
+
+.dashboard-page .sidebar-panel .sidebar-panel-container .logo-container .logo-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.dashboard-page .sidebar-panel .sidebar-panel-container .nav-container {
+  
+}
+
+.dashboard-page .sidebar-panel .sidebar-panel-container .nav-container ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.dashboard-page .sidebar-panel .sidebar-panel-container .nav-container ul li {
+  height: 40px;
+  padding: 12px 0px;
+}
+
+.dashboard-page .sidebar-panel .sidebar-panel-container .nav-container ul li a {
+  font-size: 16px;
+  line-height: 16px;
+  text-decoration: none;
+  color: #637282;
+}
+
+.dashboard-page .sidebar-panel .sidebar-panel-container .nav-container ul li a:hover {
+  opacity: .8;
+}
+
+.dashboard-page .sidebar-panel .sidebar-panel-container .nav-container ul li a.active {
+  color: #0070E0;
+}
+
+.dashboard-page .page-content {
+  min-height: 425px;
+  padding-left: 240px;
+}
+
+.dashboard-page .page-content header {
+  position: fixed;
+  left: 240px;
+  right: 0px;
+  background: #fff;
+  padding: 40px 40px 0 40px;
+  height: 96px;
+}
+
+.dashboard-page .page-content header .page-title-container {
+  float: left;
+}
+
+.dashboard-page .page-content header .page-title-container h1 {
+  font-size: 20px;
+  line-height: 32px;
+  padding: 0;
+  margin: 0;
+  color: #1B2733;
+}
+
+.dashboard-page .page-content header .topnav-container {
+  float: right;
+}
+
+.dashboard-page .page-content header .topnav-container .nav {
+  height: 32px;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  line-height: 32px;
+}
+
+.dashboard-page .page-content header .topnav-container .nav .dropdown .dropdown-toggle {
+  color: #1B2733;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 0px;
+}
+
+.dashboard-page .page-content header .topnav-container .nav .dropdown .dropdown-toggle:focus, .dashboard-page .page-content header .topnav-container ul .dropdown .dropdown-toggle:hover {
+  background: none;
+}
+
+.dashboard-page .page-content header .topnav-container .nav .dropdown.open .dropdown-toggle {
+  background: none;
+}
+
+.dashboard-page .page-content header .topnav-container .nav .dropdown.open .dropdown-menu {
+  right: 0px;
+  left: auto;
+  padding: 0px;
+  display: inline-block;
+  box-sizing: inherit;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  min-width: 160px;
+  background-color: #FFF;
+  box-shadow: 0 0 0 1px rgba(99, 114, 130, 0.16), 0 8px 16px rgba(27, 39, 51, 0.08);
+  border-radius: 4px;
+  outline: none;
+  border: 0px;
+}
+
+.dashboard-page .page-content header .topnav-container .nav .dropdown.open .dropdown-menu li:focus {
+  outline: none;
+}
+
+.dashboard-page .page-content header .topnav-container .nav .dropdown.open .dropdown-menu li a {
+  padding: 9px 16px;
+  outline: none;
+}
+    
 
    

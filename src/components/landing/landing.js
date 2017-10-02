@@ -32,17 +32,19 @@ class Landing extends Component {
           </div>
         </header>
         <div className="page-content">
-          <div className="landing-img-container">
-            <img src="/assets/images/landing.png" alt="landing"/>
-          </div>
-          <div className="form-container">
-            {
-              this.state.activeState === 'signin' ? (
-                <Signin onSignupClick={this.handleSignupClick}/>
-              ):(
-                <Signup onSigninClick={this.handleSigninClick}/>
-              )
-            }
+          <div className="page-inner-content">
+            <div className="landing-img-container hidden-xs">
+              <img src="/assets/images/landing.png" alt="landing"/>
+            </div>
+            <div className="form-container">
+              {
+                this.state.activeState === 'signin' ? (
+                  <Signin onSignupClick={this.handleSignupClick}/>
+                ):(
+                  <Signup onSigninClick={this.handleSigninClick}/>
+                )
+              }
+            </div>
           </div>
         </div>
       </div>

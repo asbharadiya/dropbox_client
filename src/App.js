@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import './App.css';
+import './Responsive.css';
 import Landing from './components/landing/landing';
 import Dashboard from './components/dashboard/dashboard';
 import Home from './components/dashboard/home';
