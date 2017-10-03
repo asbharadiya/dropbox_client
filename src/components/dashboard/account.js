@@ -15,7 +15,7 @@ class Account extends Component {
 		    			
 		    		</div>
         		</div>
-        		<RightContent/>
+        		<RightContent pagetype="account"/>
       		</div>
     	);
   	}

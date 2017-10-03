@@ -60,9 +60,16 @@ class Header extends Component {
       			</div>
       			<div className="topnav-container">
 	      			<Nav>
-				        <NavDropdown eventKey={1} title="User Name" id="user-dropdown">
-					        <MenuItem eventKey={1.1} onClick={()=>this.handleLink("account")}>Account Settings</MenuItem>
-					        <MenuItem eventKey={1.2}>Logout</MenuItem>
+				        <NavDropdown eventKey={1} title={
+                    <div className="div-circular">
+                      <img src="/assets/images/faceholder.png" alt="user" />
+                    </div>
+                  } 
+                  id="user-dropdown">
+                  <MenuItem eventKey={1.1} className="user-label">Ankit Bharadiya</MenuItem>
+                  <MenuItem divider/>
+					        <MenuItem eventKey={1.2} onClick={()=>this.handleLink("/account")}>Account Settings</MenuItem>
+					        <MenuItem eventKey={1.3}>Logout</MenuItem>
 				        </NavDropdown>
 				    </Nav>
       			</div>

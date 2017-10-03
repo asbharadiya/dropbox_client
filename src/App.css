@@ -293,6 +293,15 @@ a:hover {
   padding: 0px;
 }
 
+.dashboard-page .page-content header .topnav-container .nav .dropdown .dropdown-toggle .caret {
+  display: none;
+}
+
+.dashboard-page .page-content header .topnav-container .nav .dropdown .dropdown-toggle .div-circular img {
+  width: 32px;
+  height: 32px;
+}
+
 .dashboard-page .page-content header .topnav-container .nav .dropdown .dropdown-toggle:focus, .dashboard-page .page-content header .topnav-container ul .dropdown .dropdown-toggle:hover {
   background: none;
 }
@@ -310,12 +319,17 @@ a:hover {
   font-size: 14px;
   line-height: 24px;
   font-weight: 400;
-  min-width: 160px;
+  min-width: 220px;
   background-color: #FFF;
   box-shadow: 0 0 0 1px rgba(99, 114, 130, 0.16), 0 8px 16px rgba(27, 39, 51, 0.08);
   border-radius: 4px;
   outline: none;
   border: 0px;
+  margin-top: 8px;
+}
+
+.dashboard-page .page-content header .topnav-container .nav .dropdown.open .dropdown-menu li.user-label {
+  margin-top: 9px;
 }
 
 .dashboard-page .page-content header .topnav-container .nav .dropdown.open .dropdown-menu li:focus {
@@ -352,6 +366,39 @@ a:hover {
 .dashboard-page .page-content .inner-page-content .right-content .right-content-inner .btn-main {
   width: 100%;
   margin-top: 40px;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .secondary-menu {
+  list-style: none;
+  margin: 0px;
+  margin-top: 20px;
+  padding: 0px;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .secondary-menu .menu-element {
+  font-size: 14px;
+  margin-left: 8px;
+  height: 32px;
+  line-height: 32px;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .secondary-menu .menu-element a {
+  color: #0070E0;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 8px 0px;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .secondary-menu .menu-element a:hover {
+  color: #007AF5;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .secondary-menu .menu-element a:active {
+  color: #005DD6;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .secondary-menu .menu-element a i {
+  width: 32px;
 }
 
 /*HOMEPAGE*/
@@ -496,6 +543,10 @@ a:hover {
   padding: 0px 10px;
   text-align: center;
   box-shadow: none;
+}
+
+.dashboard-page .page-content .item-row:hover .item-options .dropdown .dropdown-toggle .btn {
+  border: 1px solid #C1C7CD;
 }
 
 .dashboard-page .page-content .item-row .item-options .dropdown .dropdown-toggle .btn:hover {

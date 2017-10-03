@@ -29,7 +29,7 @@ class Home extends Component {
 	        		<HomeSection title="Starred" data={this.state.starred}/>
 	        		<HomeSection title="Recent" data={this.state.recent}/>
         		</div>
-        		<RightContent/>
+        		<RightContent pagetype="home"/>
       		</div>
     	);
   	}

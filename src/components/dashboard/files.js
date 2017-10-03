@@ -35,7 +35,7 @@ class Files extends Component {
 		                })
 		            }
         		</div>
-        		<RightContent/>
+        		<RightContent pagetype="files"/>
       		</div>
     	);
   	}
