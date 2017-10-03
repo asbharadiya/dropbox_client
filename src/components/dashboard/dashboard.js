@@ -4,7 +4,7 @@ import Sidebar from './sidebar';
 
 class Dashboard extends Component {
   	render() {
-    	return (
+      return (
       		<div className="dashboard-page">
       			<Sidebar/>
       			<div className="page-content">

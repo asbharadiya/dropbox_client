@@ -13,6 +13,15 @@ export const getDashboardData = () =>
         return error;
     });
 
+export const getFilesData = () =>
+	fetch('/assets/data/files.json', {
+	    method: 'GET'
+	}).then(res => {
+	    return res.json();
+	}).catch(error => {
+        return error;
+    });
+
 
 export const login = (payload) =>
 	fetch(api+'/api/login', {
