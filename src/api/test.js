@@ -24,12 +24,13 @@ export const getFilesData = () =>
 
 
 export const login = (payload) =>
-	fetch(api+'/api/login', {
+	fetch(api+'/api/signin', {
 	    method: 'POST',
 	    headers: {
 	    	...headers,
             'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify(payload)
 	}).then(res => {
 		return res.json();
