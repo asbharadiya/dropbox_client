@@ -1,44 +1,78 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import ItemRow from './itemrow';
 import RightContent from './rightcontent';
-import * as api from '../../api/test';
+import * as actions from '../../actions/asset';
 
 class Files extends Component {
 
 	constructor(props){
 		super(props);
-		this.state = {
-			files:[]
-		}
+    this.loadPage = this.loadPage.bind(this);
 	}
 
 	componentDidMount(){
-		api.getFilesData().then((res) => {
-			this.setState({
-				files:res.files
-			})
-        });
+		this.loadPage();
 	}
 
-  	render() {
-  		return (
-      		<div className="inner-page-content has-right-content">
-      			<div className="filespage">
-      				<div className="page-header">
-		    			
-		    		</div>
-      				{
-	        			this.state.files.map(function(item,index) {
-		                    return (
-		                      	<ItemRow key={index} item={item}/>
-		                    );
-		                })
-		            }
-        		</div>
-        		<RightContent pagetype="files"/>
+  componentWillReceiveProps(nextProps){
+    if((this.props.deleteAssetSuccess !== nextProps.deleteAssetSuccess && nextProps.deleteAssetSuccess)
+      || (this.props.addAssetToStarredSuccess !== nextProps.addAssetToStarredSuccess && nextProps.addAssetToStarredSuccess)
+      || (this.props.removeAssetFromStarredSuccess !== nextProps.removeAssetFromStarredSuccess && nextProps.removeAssetFromStarredSuccess)
+      || (this.props.addFolderSuccess !== nextProps.addFolderSuccess && nextProps.addFolderSuccess)
+      || (this.props.uploadFileSuccess !== nextProps.uploadFileSuccess && nextProps.uploadFileSuccess)){
+      this.loadPage();
+    }
+  }
+
+  loadPage(){
+    let parent = null;
+    let location = this.props.location.pathname.split("/");
+    if(location[location.length-1] !== "home" && location[location.length-1] !== "files"){
+        parent = location[location.length-1];
+    }
+    this.props.getAssets(parent);
+  }
+
+	render() {
+	const _this = this;
+		return (
+    		<div className="inner-page-content has-right-content">
+    			<div className="filespage">
+    				<div className="page-header">
+	    			
+	    		</div>
+    				{
+        			this.props.assets.map(function(item,index) {
+	                    return (
+	                      	<ItemRow key={index} item={item}/>
+	                    );
+	                })
+	            }
       		</div>
-    	);
-  	}
+      		<RightContent pagetype="files"/>
+    		</div>
+  	);
+	}
 }
 
-export default Files;
+function mapStateToProps(state) {
+    return {
+      assets:state.assets,
+      /*from child components*/
+      deleteAssetSuccess:state.deleteAssetSuccess,
+      addAssetToStarredSuccess:state.addAssetToStarredSuccess,
+      removeAssetFromStarredSuccess:state.removeAssetFromStarredSuccess,
+      addFolderSuccess:state.addFolderSuccess,
+      uploadFileSuccess:state.uploadFileSuccess
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getAssets : (parent) => dispatch(actions.getAssets(parent))
+    };
+}
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(props => <Files {...props}/>));

@@ -73,11 +73,11 @@ class Signup extends Component {
       		<div className="form-body">
       			<div className="form-group">
               <span className="error">{this.state.firstNameError}</span>
-        			<input type="text" className="form-control" placeholder="First Name" ref={(firstName) => this.firstName = firstName}/>
+        			<input type="text" className="form-control" placeholder="First name" ref={(firstName) => this.firstName = firstName}/>
         		</div>
         		<div className="form-group">
               <span className="error">{this.state.lastNameError}</span>
-        			<input type="text" className="form-control" placeholder="Last Name" ref={(lastName) => this.lastName = lastName}/>
+        			<input type="text" className="form-control" placeholder="Last name" ref={(lastName) => this.lastName = lastName}/>
         		</div>
         		<div className="form-group">
               <span className="error">{this.state.emailError}</span>

@@ -34,6 +34,24 @@ a:hover {
 
 .btn-dropbox:hover {
   background-color: #007AF5;
+  border: 0px;
+}
+
+.btn-dropbox:focus { 
+  background-color: #005DD6;
+  border: 0px;
+}
+
+.btn-dropbox:active { 
+  background-color: #005DD6;
+  border: 0px;
+}
+
+.btn-dropbox-default {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0px 16px;
+  line-height: 32px;
 }
 
 /*LANDING PAGE*/
@@ -182,6 +200,71 @@ a:hover {
   text-align: right;
 }
 
+/*NEW FOLDER MODAL*/
+
+.newFolderModalOverlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 6;
+  transition: all 500ms ease-in-out;
+  opacity: 0;
+}
+
+.newFolderModalOverlay_after-open {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+}
+
+.newFolderModalOverlay_before-close {
+  opacity: 0;
+}
+
+.newFolderModal {
+  position: absolute;
+  top: 25%;
+  transform: translateY(-50%);
+  margin: 0px auto;
+  width: 500px;
+  left: 0px;
+  right: 0px;
+  bottom: auto;
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  outline: none;
+  padding: 60px;
+  transition: all 500ms ease-in-out;
+  opacity: 0;
+}
+
+.newFolderModal_after-open {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+}
+
+.newFolderModal_before-close {
+  opacity: 0;
+}
+
+.newFolderModal .form-group .error {
+  color: #e82110;
+  font-size: 12px;
+  float: left;
+}
+
+.newFolderModal .btn-container {
+  margin-top: 45px;
+  margin-bottom: 0px;
+  text-align: right;
+}
+
+.newFolderModal .btn-container .btn {
+  margin-left: 15px;
+}
+
 /*DASHBOARD*/
 .dashboard-page {
 
@@ -247,6 +330,7 @@ a:hover {
 .dashboard-page .page-content {
   min-height: 425px;
   padding-left: 240px;
+  padding-bottom: 100px;
 }
 
 .dashboard-page .page-content header {
@@ -359,7 +443,6 @@ a:hover {
   width: 240px;
   padding-right: 40px;
   flex: 0 0 240px;
-
 }
 
 .dashboard-page .page-content .inner-page-content .right-content .right-content-inner {
@@ -369,9 +452,43 @@ a:hover {
   z-index: 4;
 }
 
-.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .btn-main {
-  width: 100%;
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .input-file-wrapper {
+  display: block; 
+  width: 100%; 
+  height: 32px; 
   margin-top: 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .input-file-wrapper:hover .btn-main {
+  background-color: #007AF5;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .input-file-wrapper:active .btn-main {
+  background-color: #005DD6;
+  border: 0px;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .input-file-wrapper:focus .btn-main {
+  background-color: #005DD6;
+  border: 0px;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .input-file-wrapper .btn-main {
+  position: relative; 
+  width: 100%;
+}
+
+.dashboard-page .page-content .inner-page-content .right-content .right-content-inner .input-file-wrapper input[type=file] {
+  cursor: pointer;
+  font-size: 23px;
+  filter: alpha(opacity=1);
+  -moz-opacity: 0.01;
+  opacity: 0.01;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .dashboard-page .page-content .inner-page-content .right-content .right-content-inner .secondary-menu {
@@ -413,6 +530,7 @@ a:hover {
   padding-left: 40px;
   padding-right: 40px;
   flex: 1;
+  min-width: 320px;
 } 
 
 .dashboard-page .page-content .homepage .home-section {
@@ -436,6 +554,7 @@ a:hover {
   padding-left: 40px;
   padding-right: 40px;
   flex: 1;
+  min-width: 320px;
 } 
 
 .dashboard-page .page-content .filespage .page-header {
@@ -463,11 +582,13 @@ a:hover {
 
 .dashboard-page .page-content .item-row .item-icon {
   padding: 12px;
+  text-align: center;
 }
 
-.dashboard-page .page-content .item-row .item-icon img {
+.dashboard-page .page-content .item-row .item-icon i {
   width: 40px;
   height: 40px;
+  color: #71B9F4;
 }
 
 .dashboard-page .page-content .item-row .item-content {

@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import HomeSection from './homesection';
 import RightContent from './rightcontent';
-import * as api from '../../api/test';
+import {connect} from 'react-redux';
+import * as actions from '../../actions/asset';
 
 class Home extends Component {
 
-	constructor(props){
-		super(props);
-		this.state = {
-			starred:[],
-			recent:[]
-		}
+	componentDidMount(){
+		this.props.getStarredAssets();
+		this.props.getRecentAssets();
 	}
 
-	componentDidMount(){
-		api.getDashboardData().then((res) => {
-			this.setState({
-				starred:res.starred,
-				recent:res.recent
-			})
-        });
+	componentWillReceiveProps(nextProps,props){
+		if((this.props.deleteAssetSuccess !== nextProps.deleteAssetSuccess && nextProps.deleteAssetSuccess)
+	    	|| (this.props.addAssetToStarredSuccess !== nextProps.addAssetToStarredSuccess && nextProps.addAssetToStarredSuccess)
+	    	|| (this.props.removeAssetFromStarredSuccess !== nextProps.removeAssetFromStarredSuccess && nextProps.removeAssetFromStarredSuccess)
+	    	|| (this.props.addFolderSuccess !== nextProps.addFolderSuccess && nextProps.addFolderSuccess)
+	    	|| (this.props.uploadFileSuccess !== nextProps.uploadFileSuccess && nextProps.uploadFileSuccess)){
+	    	this.props.getStarredAssets();
+			this.props.getRecentAssets();
+	    }
 	}
 
   	render() {
   		return (
       		<div className="inner-page-content has-right-content">
       			<div className="homepage">
-	        		<HomeSection title="Starred" data={this.state.starred}/>
-	        		<HomeSection title="Recent" data={this.state.recent}/>
+	        		<HomeSection title="Starred" data={this.props.starredAssets}/>
+	        		<HomeSection title="Recent" data={this.props.recentAssets}/>
         		</div>
         		<RightContent pagetype="home"/>
       		</div>
@@ -35,4 +35,24 @@ class Home extends Component {
   	}
 }
 
-export default Home;
+function mapStateToProps(state) {
+    return {
+        starredAssets:state.starredAssets,
+        recentAssets:state.recentAssets,
+        /*from child components*/
+        deleteAssetSuccess:state.deleteAssetSuccess,
+        addAssetToStarredSuccess:state.addAssetToStarredSuccess,
+        removeAssetFromStarredSuccess:state.removeAssetFromStarredSuccess,
+        addFolderSuccess:state.addFolderSuccess,
+        uploadFileSuccess:state.uploadFileSuccess
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getStarredAssets : () => dispatch(actions.getStarredAssets()),
+        getRecentAssets : () => dispatch(actions.getRecentAssets())
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
