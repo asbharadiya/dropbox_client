@@ -24,14 +24,14 @@ class RightContent extends Component {
         if(nextProps.addFolderSuccess){
             this.closeNewFolder();
             //TODO: show notification that folder added successfully
-        } else {
+        } else if(nextProps.addFolderSuccess === false) {
             this.setState({
                 newFolderError: "Opps! Please try again"
             });
         }
         if(nextProps.uploadFileSuccess){
             //TODO: show notification that file uploaded successfully
-        } else {
+        } else if(nextProps.uploadFileSuccess === false) {
             //TODO: show notification that file upload failed
         }
     }

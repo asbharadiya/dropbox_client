@@ -13,7 +13,7 @@ class Files extends Component {
 	}
 
 	componentDidMount(){
-		this.loadPage();
+		this.loadPage(this.props);
 	}
 
   componentWillReceiveProps(nextProps){
@@ -21,14 +21,15 @@ class Files extends Component {
       || (this.props.addAssetToStarredSuccess !== nextProps.addAssetToStarredSuccess && nextProps.addAssetToStarredSuccess)
       || (this.props.removeAssetFromStarredSuccess !== nextProps.removeAssetFromStarredSuccess && nextProps.removeAssetFromStarredSuccess)
       || (this.props.addFolderSuccess !== nextProps.addFolderSuccess && nextProps.addFolderSuccess)
-      || (this.props.uploadFileSuccess !== nextProps.uploadFileSuccess && nextProps.uploadFileSuccess)){
-      this.loadPage();
+      || (this.props.uploadFileSuccess !== nextProps.uploadFileSuccess && nextProps.uploadFileSuccess)
+      || (this.props.location.pathname !== nextProps.location.pathname)){
+      this.loadPage(nextProps);
     }
   }
 
-  loadPage(){
+  loadPage(props){
     let parent = null;
-    let location = this.props.location.pathname.split("/");
+    let location = props.location.pathname.split("/");
     if(location[location.length-1] !== "home" && location[location.length-1] !== "files"){
         parent = location[location.length-1];
     }
@@ -36,7 +37,7 @@ class Files extends Component {
   }
 
 	render() {
-	const _this = this;
+    const _this = this;
 		return (
     		<div className="inner-page-content has-right-content">
     			<div className="filespage">

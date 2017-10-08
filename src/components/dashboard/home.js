@@ -16,23 +16,24 @@ class Home extends Component {
 	    	|| (this.props.addAssetToStarredSuccess !== nextProps.addAssetToStarredSuccess && nextProps.addAssetToStarredSuccess)
 	    	|| (this.props.removeAssetFromStarredSuccess !== nextProps.removeAssetFromStarredSuccess && nextProps.removeAssetFromStarredSuccess)
 	    	|| (this.props.addFolderSuccess !== nextProps.addFolderSuccess && nextProps.addFolderSuccess)
-	    	|| (this.props.uploadFileSuccess !== nextProps.uploadFileSuccess && nextProps.uploadFileSuccess)){
+	    	|| (this.props.uploadFileSuccess !== nextProps.uploadFileSuccess && nextProps.uploadFileSuccess)
+        || (this.props.location.pathname !== nextProps.location.pathname)){
 	    	this.props.getStarredAssets();
-			this.props.getRecentAssets();
-	    }
+			  this.props.getRecentAssets();
+	  }
 	}
 
-  	render() {
-  		return (
-      		<div className="inner-page-content has-right-content">
-      			<div className="homepage">
-	        		<HomeSection title="Starred" data={this.props.starredAssets}/>
-	        		<HomeSection title="Recent" data={this.props.recentAssets}/>
-        		</div>
-        		<RightContent pagetype="home"/>
+	render() {
+		return (
+    		<div className="inner-page-content has-right-content">
+    			<div className="homepage">
+        		<HomeSection title="Starred" data={this.props.starredAssets}/>
+        		<HomeSection title="Recent" data={this.props.recentAssets}/>
       		</div>
-    	);
-  	}
+      		<RightContent pagetype="home"/>
+    		</div>
+  	);
+	}
 }
 
 function mapStateToProps(state) {

@@ -14,7 +14,15 @@ const reducer = (state = initialState, action) => {
     case "SESSION_INACTIVE" :  
       return {...state,isLogged:false};
     case "GET_ASSETS_SUCCESS" :
-      return {...state,assets:action.data};
+      return {
+        ...state,
+        assets:action.data,
+        deleteAssetSuccess:undefined,
+        addAssetToStarredSuccess:undefined,
+        removeAssetFromStarredSuccess:undefined,
+        addFolderSuccess:undefined,
+        uploadFileSuccess:undefined
+      };
     case "GET_ASSETS_FAILURE" :  
       return state;
     case "GET_STARRED_ASSETS_SUCCESS" :
