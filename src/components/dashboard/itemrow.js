@@ -16,12 +16,12 @@ class ItemRow extends Component {
     this.removeAssetFromStarred = this.removeAssetFromStarred.bind(this);
   }
 
-  goToFolder(folder){
+  goToFolder(item){
     let location = this.props.location.pathname.split("/");
     if(location[location.length-1] === "home" || location[location.length-1] === "files"){
-        this.props.history.push("folders/"+folder);
+        this.props.history.push("folders/"+item.owner+"/"+item.name);
     } else {
-      this.props.history.push(this.props.location.pathname+"/"+folder);
+      this.props.history.push(this.props.location.pathname+"/"+item.name);
     }
   }
 
@@ -29,7 +29,7 @@ class ItemRow extends Component {
     if(this.props.item.is_directory === 0){
       //download file
     } else {
-      this.goToFolder(this.props.item.name);
+      this.goToFolder(this.props.item);
     }
   }
 

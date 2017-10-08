@@ -22,7 +22,7 @@ class Files extends Component {
       || (this.props.removeAssetFromStarredSuccess !== nextProps.removeAssetFromStarredSuccess && nextProps.removeAssetFromStarredSuccess)
       || (this.props.addFolderSuccess !== nextProps.addFolderSuccess && nextProps.addFolderSuccess)
       || (this.props.uploadFileSuccess !== nextProps.uploadFileSuccess && nextProps.uploadFileSuccess)
-      || (this.props.location.pathname !== nextProps.location.pathname)){
+      || (this.props.location && nextProps.location && this.props.location.pathname !== nextProps.location.pathname)){
       this.loadPage(nextProps);
     }
   }

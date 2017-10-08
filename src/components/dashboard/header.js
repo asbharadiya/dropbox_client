@@ -49,8 +49,10 @@ class Header extends Component {
                       breadcrumb = <span key={index}><NavLink to="/files">Dropbox</NavLink></span>
                     ) : index === location.length-1 ? (
                       breadcrumb = <span key={index}><span className="breadcrumb-arrow"> > </span><span>{path}</span></span>
-                    ) : (
+                    ) : index !== 1 ? (
                       breadcrumb = <span key={index}><span className="breadcrumb-arrow"> > </span><NavLink to={`/${subpath.join("/")}`}>{path}</NavLink></span>
+                    ) : (
+                      breadcrumb = null
                     )
                     return breadcrumb;
                   })

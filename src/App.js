@@ -48,7 +48,7 @@ class App extends Component {
                     <Files/>
                   )
                 )}/>
-                <Route path='/folders/*' render={() => (
+                <Route path='/folders/:ownerid(\d+)/*' render={() => (
                   !isLogged ? (
                     <Redirect to="/"/>
                   ) : (
