@@ -8,6 +8,7 @@ import Landing from './components/landing/landing';
 import Dashboard from './components/dashboard/dashboard';
 import Home from './components/dashboard/home';
 import Files from './components/dashboard/files';
+import Group from './components/dashboard/group';
 import Account from './components/dashboard/account';
 
 class App extends Component {
@@ -53,6 +54,13 @@ class App extends Component {
                     <Redirect to="/"/>
                   ) : (
                     <Files/>
+                  )
+                )}/>
+                <Route path='/groups' render={() => (
+                  !isLogged ? (
+                    <Redirect to="/"/>
+                  ) : (
+                    <Group/>
                   )
                 )}/>
                 <Route path='/account' render={() => (

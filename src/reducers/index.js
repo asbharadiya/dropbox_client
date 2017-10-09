@@ -4,7 +4,8 @@ const initialState= {
   uname: "",
   assets: [],
   starredAssets: [],
-  recentAssets: []
+  recentAssets: [],
+  groups: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -61,6 +62,94 @@ const reducer = (state = initialState, action) => {
       return {...state,deleteAssetSuccess:true};
     case "DELETE_ASSET_FAILURE" :  
       return {...state,deleteAssetSuccess:false};
+    case "GET_GROUPS_SUCCESS" :
+      return {
+        ...state,
+        groups:action.data,
+        deleteGroupSuccess:undefined,
+        addGroupSuccess:undefined
+      };
+    case "GET_GROUPS_FAILURE" :  
+      return state;
+    case "ADD_GROUP_SUCCESS" :
+      return {...state,addGroupSuccess:true};
+    case "ADD_GROUP_FAILURE" :  
+      return {...state,addGroupSuccess:false};
+    case "UPDATE_GROUP_SUCCESS" :
+      return {
+        ...state,updateGroupSuccess:true,
+        deleteGroupSuccess:undefined,
+        getGroupByIdSuccess:undefined,
+        addRemoveMemberSuccess:undefined
+      };
+    case "UPDATE_GROUP_FAILURE" :  
+      return {
+        ...state,updateGroupSuccess:false,
+        deleteGroupSuccess:undefined,
+        getGroupByIdSuccess:undefined,
+        addRemoveMemberSuccess:undefined
+      };
+    case "DELETE_GROUP_SUCCESS" :
+      return {
+        ...state,deleteGroupSuccess:true,
+        updateGroupSuccess:undefined,
+        getGroupByIdSuccess:undefined,
+        addRemoveMemberSuccess:undefined
+      };
+    case "DELETE_GROUP_FAILURE" :  
+      return {
+        ...state,deleteGroupSuccess:false,
+        updateGroupSuccess:undefined,
+        getGroupByIdSuccess:undefined,
+        addRemoveMemberSuccess:undefined
+      };
+    case "GET_GROUP_BY_ID_SUCCESS" :
+      return {
+        ...state,getGroupByIdSuccess:true,getGroupByIdData:action.data,
+        updateGroupSuccess:undefined,
+        deleteGroupSuccess:undefined,
+        addRemoveMemberSuccess:undefined
+      };
+    case "GET_GROUP_BY_ID_FAILURE" :  
+      return {
+        ...state,getGroupByIdSuccess:false,
+        updateGroupSuccess:undefined,
+        deleteGroupSuccess:undefined,
+        addRemoveMemberSuccess:undefined
+      };
+    case "ADD_REMOVE_MEMBER_SUCCESS" :
+      return {
+        ...state,addRemoveMemberSuccess:true,
+        updateGroupSuccess:undefined,
+        deleteGroupSuccess:undefined,
+        getGroupByIdSuccess:undefined
+      };
+    case "ADD_REMOVE_MEMBER_FAILURE" :  
+      return {
+        ...state,addRemoveMemberSuccess:false,
+        updateGroupSuccess:undefined,
+        deleteGroupSuccess:undefined,
+        getGroupByIdSuccess:undefined
+      };
+    case "UPDATE_USER_PROFILE_SUCCESS" :
+      return {
+        ...state,updateUserProfileSuccess:true
+      };
+    case "UPDATE_USER_PROFILE_FAILURE" :  
+      return {
+        ...state,updateUserProfileSuccess:false
+      };
+    case "GET_USER_PROFILE_SUCCESS" :
+      return {
+        ...state,
+        profile:action.data,
+        updateUserProfileSuccess:undefined
+      };
+    case "GET_USER_PROFILE_FAILURE" :  
+      return {
+        ...state,
+        updateUserProfileSuccess:undefined
+      };
     default : 
       return state;
   }

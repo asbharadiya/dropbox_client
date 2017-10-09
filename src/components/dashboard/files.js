@@ -37,13 +37,12 @@ class Files extends Component {
   }
 
 	render() {
-    const _this = this;
-		return (
+    return (
     		<div className="inner-page-content has-right-content">
     			<div className="filespage">
     				<div className="page-header">
 	    			
-	    		</div>
+	    		  </div>
     				{
         			this.props.assets.map(function(item,index) {
 	                    return (

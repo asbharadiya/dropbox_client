@@ -58,6 +58,8 @@ class Header extends Component {
                   })
                 ) : location[0] === 'account' ? (
                   'Account Settings'
+                ) : location[0] === 'groups' ? (
+                  'Groups'
                 ) : (
                   'Home'
                 )
@@ -67,15 +69,13 @@ class Header extends Component {
     			<div className="topnav-container">
       			<Nav>
 			        <NavDropdown eventKey={1} title={
-                  <div className="div-circular">
-                    <img src="/assets/images/faceholder.png" alt="user" />
+                  <div className="pull-left">
+                    {this.props.uname}
                   </div>
                 } 
                 id="user-dropdown">
-                <MenuItem eventKey={1.1} className="user-label">{this.props.uname}</MenuItem>
-                <MenuItem divider/>
-				        <MenuItem eventKey={1.2} onClick={()=>this.handleLink("/account")}>Account Settings</MenuItem>
-				        <MenuItem eventKey={1.3} onClick={()=>this.props.logout()}>Logout</MenuItem>
+				        <MenuItem eventKey={1.1} onClick={()=>this.handleLink("/account")}>Account Settings</MenuItem>
+				        <MenuItem eventKey={1.2} onClick={()=>this.props.logout()}>Logout</MenuItem>
 			        </NavDropdown>
 			    </Nav>
     			</div>

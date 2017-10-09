@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Modal from 'react-modal';
 import * as actions from '../../actions/asset';
+import * as groupActions from '../../actions/group';
 
 class RightContent extends Component {
 
@@ -13,8 +14,12 @@ class RightContent extends Component {
         this.openNewFolder = this.openNewFolder.bind(this);
         this.createNewFolder = this.createNewFolder.bind(this);
         this.closeNewFolder = this.closeNewFolder.bind(this);
+        this.openNewGroup = this.openNewGroup.bind(this);
+        this.createNewGroup = this.createNewGroup.bind(this);
+        this.closeNewGroup = this.closeNewGroup.bind(this);
         this.state = {
             showModal: false,
+            showGroupModal: false,
             newFolderError: "",
             newFolderFormError: ""
         }
@@ -26,7 +31,15 @@ class RightContent extends Component {
             //TODO: show notification that folder added successfully
         } else if(nextProps.addFolderSuccess === false) {
             this.setState({
-                newFolderError: "Opps! Please try again"
+                newFolderFormError: "Opps! Please try again"
+            });
+        }
+        if(nextProps.addGroupSuccess){
+            this.closeNewGroup();
+            //TODO: show notification that group added successfully
+        } else if(nextProps.addGroupSuccess === false) {
+            this.setState({
+                newGroupFormError: "Opps! Please try again"
             });
         }
         if(nextProps.uploadFileSuccess){
@@ -44,7 +57,7 @@ class RightContent extends Component {
         let files = document.getElementById("fileUpload").files;
         let parent = null;
         let location = this.props.location.pathname.split("/");
-        if(location[location.length-1] !== "home" && location[location.length-1] !== "files"){
+        if(location[location.length-1] !== "home" && location[location.length-1] !== "files" && location[location.length-1] !== "groups"){
             parent = location[location.length-1];
         }
         this.props.addAsset(files[0],false,parent,null);
@@ -77,6 +90,31 @@ class RightContent extends Component {
                 parent = location[location.length-1];
             }
             this.props.addAsset(null,true,parent,this.folderName.value);
+        }
+    }
+
+    openNewGroup() {
+        this.setState({ showGroupModal: true });
+    }
+
+    closeNewGroup() {
+        this.setState({ showGroupModal: false });
+    }
+
+    createNewGroup() {
+        this.setState({
+            newGroupError: "",
+            newGroupFormError: ""
+        });
+        let isValid = true;
+        if(this.groupName.value === "") {
+            isValid = false;
+            this.setState({
+                newGroupError: "Please enter group name"
+            });
+        }
+        if(isValid) {
+            this.props.createGroup(this.groupName.value);
         }
     }
 
@@ -126,7 +164,39 @@ class RightContent extends Component {
                                     </div>
                                 </Modal>
         					</div>
-        				) : (
+        				) : this.props.pagetype === "groups" ? (
+                            <div>
+                                <ul className="secondary-menu">
+                                    <li className="menu-element">
+                                        <a onClick={this.openNewGroup}>
+                                            <i className="fa fa-users" aria-hidden="true"></i>
+                                            <span>New group</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <Modal isOpen={this.state.showGroupModal} onRequestClose={this.closeNewGroup} closeTimeoutMS={500}
+                                    className={{
+                                        base: 'newFolderModal',
+                                        afterOpen: 'newFolderModal_after-open',
+                                        beforeClose: 'newFolderModal_before-close'
+                                    }}
+                                    overlayClassName={{
+                                        base: 'newFolderModalOverlay',
+                                        afterOpen: 'newFolderModalOverlay_after-open',
+                                        beforeClose: 'newFolderModalOverlay_before-close'
+                                    }}>
+                                    <div className="form-group">
+                                        <span className="error">{this.state.newGroupError}</span>
+                                        <input type="text" className="form-control" placeholder="New group name" ref={(groupName) => this.groupName = groupName}/>
+                                    </div>
+                                    <div className="form-group btn-container">
+                                        <span className="error">{this.state.newGroupFormError}</span>
+                                        <button className="btn btn-primary btn-dropbox" onClick={this.createNewGroup}>Done</button>
+                                        <button className="btn btn-default btn-dropbox-default" onClick={this.closeNewGroup}>Cancel</button>
+                                    </div>
+                                </Modal>
+                            </div>
+                        ) : (
         					<div></div>
         				)
         			}
@@ -139,13 +209,15 @@ class RightContent extends Component {
 function mapStateToProps(state) {
     return {
         addFolderSuccess:state.addFolderSuccess,
-        uploadFileSuccess:state.uploadFileSuccess
+        uploadFileSuccess:state.uploadFileSuccess,
+        addGroupSuccess:state.addGroupSuccess
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        addAsset : (file,isDir,parent,name) => dispatch(actions.addAsset(file,isDir,parent,name))
+        addAsset : (file,isDir,parent,name) => dispatch(actions.addAsset(file,isDir,parent,name)),
+        createGroup : (name) => dispatch(groupActions.createGroup(name))
     };
 }
 

@@ -27,19 +27,18 @@
 	}
   	.dashboard-page .page-content .inner-page-content .right-content {
 	 	width: 200px;
-	  	padding-right: 40px;
 	  	flex: 0 0 200px;
 	}
 	.dashboard-page .page-content .inner-page-content .right-content .right-content-inner {
-	  	position: fixed;
-	  	right: 40px;
 	  	width: 160px;
-	  	z-index: 4;
 	}
   	.dashboard-page .page-content .item-row .item-content .item-star button.not-star {
     	opacity: 1;
   	}
   	.dashboard-page .page-content .item-row .item-options .dropdown .dropdown-toggle .btn {
+    	border: 1px solid #C1C7CD;
+  	}
+  	.dashboard-page .page-content .group-row .group-options .dropdown .dropdown-toggle .btn {
     	border: 1px solid #C1C7CD;
   	}
 }

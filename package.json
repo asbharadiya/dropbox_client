@@ -11,7 +11,8 @@
     "redux-thunk": "^2.1.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
-    "react-modal": "*"
+    "react-modal": "*",
+    "react-autocomplete": "*"
   },
   "scripts": {
     "start": "react-scripts start",
