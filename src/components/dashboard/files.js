@@ -29,11 +29,13 @@ class Files extends Component {
 
   loadPage(props){
     let parent = null;
+    let superParent = null;
     let location = props.location.pathname.split("/");
     if(location[location.length-1] !== "home" && location[location.length-1] !== "files"){
         parent = location[location.length-1];
+        superParent = location[3];
     }
-    this.props.getAssets(parent);
+    this.props.getAssets(superParent,parent);
   }
 
 	render() {
@@ -71,7 +73,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssets : (parent) => dispatch(actions.getAssets(parent))
+        getAssets : (superParent,parent) => dispatch(actions.getAssets(superParent,parent))
     };
 }
 

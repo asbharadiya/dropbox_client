@@ -10,7 +10,7 @@ class ItemRow extends Component {
     super(props);
     this.goToFolder = this.goToFolder.bind(this);
     this.handleRowClick = this.handleRowClick.bind(this);
-    this.downloadFolder = this.downloadFolder.bind(this);
+    this.downloadAsset = this.downloadAsset.bind(this);
     this.deleteAsset = this.deleteAsset.bind(this);
     this.addAssetToStarred = this.addAssetToStarred.bind(this);
     this.removeAssetFromStarred = this.removeAssetFromStarred.bind(this);
@@ -28,13 +28,24 @@ class ItemRow extends Component {
   handleRowClick(){
     if(this.props.item.is_directory === 0){
       //download file
+      this.downloadAsset();
     } else {
       this.goToFolder(this.props.item);
     }
   }
 
-  downloadFolder(){
-    //download folder
+  downloadAsset(){
+    //download asset
+    let superParent = null
+    let location = this.props.location.pathname.split("/");
+    if(location[location.length-1] !== "home" && location[location.length-1] !== "files" && location[location.length-1] !== "groups"){
+        superParent = location[3];
+    }
+    if(superParent === null) {
+      window.open("http://localhost:3001/api/download_asset/"+this.props.item.id,"_blank");
+    } else {
+      window.open("http://localhost:3001/api/download_asset/"+this.props.item.id+"/"+superParent,"_blank");
+    }
   }
 
   deleteAsset(){
@@ -94,24 +105,33 @@ class ItemRow extends Component {
     				}
     			</div>
     		</div>
-    		<div className="item-options">
-    			<NavDropdown 
-    				title={
-    					<button className="btn btn-primary btn-dropbox"><i className="fa fa-ellipsis-h" aria-hidden="true"></i></button>
-    				} 
-    				id="user-dropdown"
-    				eventKey={1} >
-            {  
-              this.props.item.is_directory === 1 &&
-		            <MenuItem eventKey={1.1} onClick={this.downloadFolder}>Download</MenuItem>
-            }
-		        <MenuItem eventKey={1.2}>Share</MenuItem>
-            {
-              this.props.item.can_delete === 1 &&
-		            <MenuItem eventKey={1.3} onClick={this.deleteAsset}>Delete</MenuItem>
-            }
-	        </NavDropdown>
-    	  </div>
+        <div className="item-options">
+          {
+            this.props.item.is_directory === 1 && this.props.item.can_delete_or_share === 0 ? (
+              <div></div>
+            ) : (
+        			<NavDropdown 
+        				title={
+        					<button className="btn btn-primary btn-dropbox"><i className="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+        				} 
+        				id="user-dropdown"
+        				eventKey={1} >
+                {  
+                  this.props.item.is_directory === 0 &&
+    		            <MenuItem eventKey={1.1} onClick={this.downloadAsset}>Download</MenuItem>
+                }
+    		        {
+                  this.props.item.can_delete_or_share === 1 &&
+                    <MenuItem eventKey={1.2}>Share</MenuItem>
+                }
+                {
+                  this.props.item.can_delete_or_share === 1 &&
+    		            <MenuItem eventKey={1.3} onClick={this.deleteAsset}>Delete</MenuItem>
+                }
+    	        </NavDropdown>
+            )
+          }
+        </div>
 	    </div>
   	);
 	}

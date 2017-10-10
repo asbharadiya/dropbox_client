@@ -8,7 +8,7 @@ function addAssetFailure(isDir){
     return {type: "ADD_ASSET_FAILURE",isDir}
 }
 
-export function addAsset(file,isDir,parent,name) {
+export function addAsset(file,isDir,superParent,parent,name) {
 	return function(dispatch) {
 		let formData  = new FormData();
 		if(file !== null) {
@@ -17,6 +17,9 @@ export function addAsset(file,isDir,parent,name) {
 		formData.append("is_directory",isDir);
 		if(parent !== null) {
 			formData.append("parent",parent);
+		}
+		if(superParent !== null) {
+			formData.append("super_parent",superParent);
 		}
 		if(name !== null) {
 			formData.append("name",name);
@@ -41,9 +44,9 @@ function getAssetsFailure(){
     return {type: "GET_ASSETS_FAILURE"}
 }
 
-export function getAssets(parent) {
+export function getAssets(superParent,parent) {
 	return function(dispatch) {
-		return api.getAssets({parent:parent}).then(response => {
+		return api.getAssets({super_parent:superParent,parent:parent}).then(response => {
 	    	if(response.status === 200){
 	    		dispatch(getAssetsSuccess(response.data));
 	    	} else {

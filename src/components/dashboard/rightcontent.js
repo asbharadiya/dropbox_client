@@ -56,11 +56,13 @@ class RightContent extends Component {
     handleFileUpload() {
         let files = document.getElementById("fileUpload").files;
         let parent = null;
+        let superParent = null
         let location = this.props.location.pathname.split("/");
         if(location[location.length-1] !== "home" && location[location.length-1] !== "files" && location[location.length-1] !== "groups"){
             parent = location[location.length-1];
+            superParent = location[3];
         }
-        this.props.addAsset(files[0],false,parent,null);
+        this.props.addAsset(files[0],false,superParent,parent,null);
     }
 
     openNewFolder() {
@@ -216,7 +218,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addAsset : (file,isDir,parent,name) => dispatch(actions.addAsset(file,isDir,parent,name)),
+        addAsset : (file,isDir,superParent,parent,name) => dispatch(actions.addAsset(file,isDir,superParent,parent,name)),
         createGroup : (name) => dispatch(groupActions.createGroup(name))
     };
 }
