@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
+import NotificationSystem from 'react-notification-system';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from '../../actions/asset';
@@ -14,6 +15,11 @@ class ItemRow extends Component {
     this.deleteAsset = this.deleteAsset.bind(this);
     this.addAssetToStarred = this.addAssetToStarred.bind(this);
     this.removeAssetFromStarred = this.removeAssetFromStarred.bind(this);
+    this.notificationSystem = null;
+  }
+
+  componentDidMount(){
+    this.notificationSystem = this.refs.notificationSystem;
   }
 
   goToFolder(item){
@@ -65,19 +71,37 @@ class ItemRow extends Component {
 
   componentWillReceiveProps(nextProps){
     if(nextProps.deleteAssetSuccess){
-      //TODO: show notification that asset deleted successfully
+      this.notificationSystem.addNotification({
+        message: 'Successfully deleted',
+        level: 'success'
+      });
     } else {
-      //TODO: show notification that asset delete failed
+      this.notificationSystem.addNotification({
+        message: 'Opps! Something went wrong',
+        level: 'error'
+      });
     }
     if(nextProps.addAssetToStarredSuccess){
-        //TODO: show notification that asset added to starred successfully
+        this.notificationSystem.addNotification({
+          message: 'Successfully added to starred',
+          level: 'success'
+        });
     } else {
-        //TODO: show notification that adding asset to starred failed
+        this.notificationSystem.addNotification({
+          message: 'Opps! Something went wrong',
+          level: 'error'
+        });
     }
     if(nextProps.removeAssetFromStarredSuccess){
-        //TODO: show notification that asset removed from starred successfully
+        this.notificationSystem.addNotification({
+          message: 'Successfully removed from starred',
+          level: 'success'
+        });
     } else {
-        //TODO: show notification that removing asset from starred failed
+        this.notificationSystem.addNotification({
+          message: 'Opps! Something went wrong',
+          level: 'error'
+        });
     }
   }
 
@@ -132,6 +156,7 @@ class ItemRow extends Component {
             )
           }
         </div>
+        <NotificationSystem ref="notificationSystem" />
 	    </div>
   	);
 	}

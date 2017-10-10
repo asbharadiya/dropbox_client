@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
+import NotificationSystem from 'react-notification-system';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Modal from 'react-modal';
@@ -34,6 +35,11 @@ class GroupRow extends Component {
     this.getItemValue = this.getItemValue.bind(this);
     this.renderItem = this.renderItem.bind(this);
     this.retrieveDataAsynchronously = this.retrieveDataAsynchronously.bind(this);
+    this.notificationSystem = null;
+  }
+
+  componentDidMount(){
+    this.notificationSystem = this.refs.notificationSystem;
   }
 
   handleRowClick(){
@@ -62,9 +68,15 @@ class GroupRow extends Component {
   componentWillReceiveProps(nextProps){
     if(nextProps.getGroupByIdData === undefined || nextProps.getGroupByIdData.group.id === nextProps.group.id){
       if(nextProps.deleteGroupSuccess){
-        //TODO: show notification that group deleted successfully
+        this.notificationSystem.addNotification({
+          message: 'Group successfully deleted',
+          level: 'success'
+        });
       } else if(nextProps.deleteGroupSuccess === false) {
-        //TODO: show notification that group delete failed
+        this.notificationSystem.addNotification({
+          message: 'Opps! Something went wrong',
+          level: 'error'
+        });
       }
       if(nextProps.getGroupByIdSuccess){
         this.setState({
@@ -74,20 +86,32 @@ class GroupRow extends Component {
           searchValue: ""
         });
       } else if(nextProps.getGroupByIdSuccess === false){
-        //TODO: show notification that failed to load data
+        this.notificationSystem.addNotification({
+          message: 'Failed to load group data',
+          level: 'error'
+        });
       }
       if(nextProps.updateGroupSuccess){
-        //TODO: show notification that group updated successfully
+        this.notificationSystem.addNotification({
+          message: 'Group successfully updated',
+          level: 'success'
+        });
       } else if(nextProps.updateGroupSuccess === false){
         this.setState({
           groupNameError: "Opps! Please try again"
         })
       }
       if(nextProps.addRemoveMemberSuccess){
-        //TODO: show notification that member added
+        this.notificationSystem.addNotification({
+          message: 'Member successfully added',
+          level: 'success'
+        });
         this.props.getGroupById(this.props.group.id);
       } else if(nextProps.addRemoveMemberSuccess === false){
-        //TODO: show notification that member adding failed
+        this.notificationSystem.addNotification({
+          message: 'Opps! Something went wrong',
+          level: 'error'
+        });
       }
     }
   }
@@ -243,6 +267,7 @@ class GroupRow extends Component {
               <button className="btn btn-default btn-dropbox-default" onClick={this.closeViewGroup}>Cancel</button>
           </div>
         </Modal>
+        <NotificationSystem ref="notificationSystem" />
       </div>
   	);
 	}

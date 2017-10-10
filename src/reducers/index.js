@@ -27,11 +27,27 @@ const reducer = (state = initialState, action) => {
     case "GET_ASSETS_FAILURE" :  
       return state;
     case "GET_STARRED_ASSETS_SUCCESS" :
-      return {...state,starredAssets:action.data};
+      return {
+        ...state,
+        starredAssets:action.data,
+        deleteAssetSuccess:undefined,
+        addAssetToStarredSuccess:undefined,
+        removeAssetFromStarredSuccess:undefined,
+        addFolderSuccess:undefined,
+        uploadFileSuccess:undefined
+      };
     case "GET_STARRED_ASSETS_FAILURE" :  
       return state;
     case "GET_RECENT_ASSETS_SUCCESS" :
-      return {...state,recentAssets:action.data};
+      return {
+        ...state,
+        recentAssets:action.data,
+        deleteAssetSuccess:undefined,
+        addAssetToStarredSuccess:undefined,
+        removeAssetFromStarredSuccess:undefined,
+        addFolderSuccess:undefined,
+        uploadFileSuccess:undefined
+      };
     case "GET_RECENT_ASSETS_FAILURE" :  
       return state;
     case "ADD_ASSET_SUCCESS" :

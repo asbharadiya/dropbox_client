@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import NotificationSystem from 'react-notification-system';
 import RightContent from './rightcontent';
 import * as actions from '../../actions/user';
 
@@ -20,18 +21,26 @@ class Account extends Component {
     }
     this.updateUserProfile = this.updateUserProfile.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.notificationSystem = null;
 	}
 
   componentDidMount(){
     this.props.getUserProfile();
+    this.notificationSystem = this.refs.notificationSystem;
   }
 
   componentWillReceiveProps(nextProps,props){
     if(nextProps.updateUserProfileSuccess){
-      //TODO show notificaiton update done
+      this.notificationSystem.addNotification({
+        message: 'Profile successfully updated',
+        level: 'success'
+      });
       this.props.getUserProfile();
     } else if(nextProps.updateUserProfileSuccess === false){
-      //TODO show notificaiton update failed
+      this.notificationSystem.addNotification({
+        message: 'Opps! Something went wrong',
+        level: 'error'
+      });
     }
     if(nextProps.profile){
       this.setState({
@@ -54,13 +63,13 @@ class Account extends Component {
 
   updateUserProfile(){
     //update user profile
-    if(this.state.first_name == ""){
+    if(this.state.first_name === ""){
       this.setState({
         firstNameError:"This field is required"
       });
       return;
     }
-    if(this.state.last_name == ""){
+    if(this.state.last_name === ""){
       this.setState({
         lastNameError:"This field is required"
       });
@@ -144,6 +153,7 @@ class Account extends Component {
             </div>
       		</div>
       		<RightContent pagetype="account"/>
+          <NotificationSystem ref="notificationSystem" />
     		</div>
   	);
 	}

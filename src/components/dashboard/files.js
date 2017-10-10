@@ -46,12 +46,16 @@ class Files extends Component {
 	    			
 	    		  </div>
     				{
-        			this.props.assets.map(function(item,index) {
-	                    return (
-	                      	<ItemRow key={index} item={item}/>
-	                    );
-	                })
-	            }
+              this.props.assets.length > 0 ? (
+          			this.props.assets.map(function(item,index) {
+                  return (
+                    	<ItemRow key={index} item={item}/>
+                  );
+                })
+  	          ) : (
+                <p className="empty-page-msg">This folder is empty</p>
+              )
+            }
       		</div>
       		<RightContent pagetype="files"/>
     		</div>

@@ -542,6 +542,11 @@ a:hover {
   padding-top: 96px;
 }
 
+.dashboard-page .page-content .inner-page-content .empty-page-msg {
+  text-align: center;
+  margin: 30px 0px;
+}
+
 .dashboard-page .page-content .inner-page-content.has-right-content {
   display: flex;
 }

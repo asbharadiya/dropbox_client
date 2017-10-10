@@ -19,7 +19,7 @@ class Home extends Component {
 	    	|| (this.props.uploadFileSuccess !== nextProps.uploadFileSuccess && nextProps.uploadFileSuccess)
             || (this.props.location && nextProps.location && this.props.location.pathname !== nextProps.location.pathname)){
 	    	this.props.getStarredAssets();
-			  this.props.getRecentAssets();
+			this.props.getRecentAssets();
 	  }
 	}
 

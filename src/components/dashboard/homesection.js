@@ -9,12 +9,16 @@ class HomeSection extends Component {
         			{this.props.title}
         		</div>
         		{
-        			this.props.data.map(function(item,index) {
+              this.props.data.length > 0 ? (
+        			  this.props.data.map(function(item,index) {
 	                    return (
 	                      	<ItemRow key={index} item={item}/>
 	                    );
-	                })
-	            }
+	              })
+              ):(
+                <p className="empty-page-msg">No {this.props.title.toLowerCase()} items found</p>
+              )
+	          }
       		</div>
     	);
   	}

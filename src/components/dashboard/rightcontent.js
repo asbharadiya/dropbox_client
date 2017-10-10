@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
+import NotificationSystem from 'react-notification-system';
 import {connect} from 'react-redux';
 import Modal from 'react-modal';
 import * as actions from '../../actions/asset';
@@ -23,12 +24,20 @@ class RightContent extends Component {
             newFolderError: "",
             newFolderFormError: ""
         }
+        this.notificationSystem = null;
+    }
+
+    componentDidMount(){
+        this.notificationSystem = this.refs.notificationSystem;
     }
 
     componentWillReceiveProps(nextProps){
         if(nextProps.addFolderSuccess){
             this.closeNewFolder();
-            //TODO: show notification that folder added successfully
+            this.notificationSystem.addNotification({
+              message: 'Folder successfully added',
+              level: 'success'
+            });
         } else if(nextProps.addFolderSuccess === false) {
             this.setState({
                 newFolderFormError: "Opps! Please try again"
@@ -36,7 +45,10 @@ class RightContent extends Component {
         }
         if(nextProps.addGroupSuccess){
             this.closeNewGroup();
-            //TODO: show notification that group added successfully
+            this.notificationSystem.addNotification({
+              message: 'Group successfully added',
+              level: 'success'
+            });
         } else if(nextProps.addGroupSuccess === false) {
             this.setState({
                 newGroupFormError: "Opps! Please try again"
@@ -44,8 +56,15 @@ class RightContent extends Component {
         }
         if(nextProps.uploadFileSuccess){
             //TODO: show notification that file uploaded successfully
+            this.notificationSystem.addNotification({
+              message: 'File successfully uploaded',
+              level: 'success'
+            });
         } else if(nextProps.uploadFileSuccess === false) {
-            //TODO: show notification that file upload failed
+            this.notificationSystem.addNotification({
+              message: 'Opps! Something went wrong',
+              level: 'error'
+            });
         }
     }
 
@@ -87,11 +106,13 @@ class RightContent extends Component {
         }
         if(isValid) {
             let parent = null;
+            let superParent = null
             let location = this.props.location.pathname.split("/");
             if(location[location.length-1] !== "home" && location[location.length-1] !== "files"){
                 parent = location[location.length-1];
+                superParent = location[3];
             }
-            this.props.addAsset(null,true,parent,this.folderName.value);
+            this.props.addAsset(null,true,superParent,parent,this.folderName.value);
         }
     }
 
@@ -203,6 +224,7 @@ class RightContent extends Component {
         				)
         			}
         		</div>
+                <NotificationSystem ref="notificationSystem" />
           </div>
   	    );
 	}
