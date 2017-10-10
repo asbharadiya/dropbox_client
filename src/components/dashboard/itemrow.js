@@ -75,7 +75,7 @@ class ItemRow extends Component {
         message: 'Successfully deleted',
         level: 'success'
       });
-    } else {
+    } else if(nextProps.deleteAssetSuccess === false){
       this.notificationSystem.addNotification({
         message: 'Opps! Something went wrong',
         level: 'error'
@@ -86,7 +86,7 @@ class ItemRow extends Component {
           message: 'Successfully added to starred',
           level: 'success'
         });
-    } else {
+    } else if(nextProps.deleteAssetSuccess === false){
         this.notificationSystem.addNotification({
           message: 'Opps! Something went wrong',
           level: 'error'
@@ -97,7 +97,7 @@ class ItemRow extends Component {
           message: 'Successfully removed from starred',
           level: 'success'
         });
-    } else {
+    } else if(nextProps.deleteAssetSuccess === false){
         this.notificationSystem.addNotification({
           message: 'Opps! Something went wrong',
           level: 'error'
