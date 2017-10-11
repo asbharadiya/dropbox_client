@@ -146,3 +146,26 @@ export function starAsset(id,isStarred) {
 	};
 }
 
+function shareAssetSuccess() {
+  	return {type: "SHARE_ASSET_SUCCESS"}
+}
+
+function shareAssetFailure(){
+    return {type: "SHARE_ASSET_FAILURE"}
+}
+
+export function shareAsset(id,shareWith,targetId) {
+	return function(dispatch) {
+		return api.shareAsset({assetId:id,shareWith:shareWith,targetId:targetId}).then(response => {
+	    	if(response.status === 200){
+	    		dispatch(shareAssetSuccess());
+	    	} else {
+	    		console.log("fail...");
+	    		dispatch(shareAssetFailure());
+	    	}
+	    }).catch(error => {
+	      	dispatch(shareAssetFailure());
+	    });
+	};
+}
+

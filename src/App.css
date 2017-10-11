@@ -338,6 +338,10 @@ a:hover {
   background-color: #fff;
 }
 
+.viewGroupModal .members-container .item p {
+  margin: 0px;
+}
+
 .viewGroupModal .members-container .item-highlighted {
   color: white;
   background-color: #4095bf;
@@ -368,6 +372,105 @@ a:hover {
 }
 
 .viewGroupModal .footer {
+  margin: 0px;
+  text-align: right;
+}
+
+/*SHARE MODAL*/
+
+.shareModalOverlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 6;
+  transition: all 500ms ease-in-out;
+  opacity: 0;
+}
+
+.shareModalOverlay_after-open {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+}
+
+.shareModalOverlay_before-close {
+  opacity: 0;
+}
+
+.shareModal {
+  position: absolute;
+  top: 25%;
+  transform: translateY(-50%);
+  margin: 0px auto;
+  width: 500px;
+  left: 0px;
+  right: 0px;
+  bottom: auto;
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  outline: none;
+  padding: 30px;
+  transition: all 500ms ease-in-out;
+  opacity: 0;
+}
+
+.shareModal_after-open {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+}
+
+.shareModal_before-close {
+  opacity: 0;
+}
+
+.shareModal .header i {
+  height: 40px;
+  float: left;
+  color: #71B9F4;
+}
+
+.shareModal .header .header-text {
+  line-height: 40px;
+  height: 40px;
+  float: left;
+  margin-left: 15px;
+}
+
+.shareModal .share-container {
+
+}
+
+.shareModal .share-container .radio {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.shareModal .share-container .menu {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.shareModal .share-container .item {
+  padding: 15px 12px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.shareModal .share-container .item p {
+  margin: 0px;
+}
+
+.shareModal .share-container .item-highlighted {
+  color: white;
+  background-color: #4095bf;
+}
+
+.shareModal .footer {
   margin: 0px;
   text-align: right;
 }
@@ -875,7 +978,6 @@ a:hover {
   border-bottom: solid 1px #E6E8EB;
   height: 64px;
   padding: 0;
-  cursor: pointer;
 }
 
 .dashboard-page .page-content .group-row .group-content {
@@ -898,9 +1000,10 @@ a:hover {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  cursor: pointer;
 }
 
-.dashboard-page .page-content .group-row:hover .group-content .group-title {
+.dashboard-page .page-content .group-row .group-content .group-title:hover {
   color: #0070E0;
 }
 

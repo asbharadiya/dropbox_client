@@ -122,6 +122,7 @@ class GroupRow extends Component {
 
   loadModalData(){
     this.props.getGroupById(this.props.group.id);
+    this.retrieveDataAsynchronously("");
   }
 
   handleNameChange(event){
@@ -145,7 +146,7 @@ class GroupRow extends Component {
     this.setState({
       searchValue: e.target.value
     });
-    this.retrieveDataAsynchronously(e.target.value);
+    //this.retrieveDataAsynchronously(e.target.value);
   }
 
   onSelect(val,item){
@@ -157,10 +158,10 @@ class GroupRow extends Component {
 
   renderItem(item, isHighlighted){
       return (
-          <div
-              className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
-              key={item.id}
-          >{item.user_name}</div>
+          <div className={`item ${isHighlighted ? 'item-highlighted' : ''}`} key={item.id}>
+            <p>{item.user_name}</p>
+            <p>{item.email}</p>
+          </div>
       ); 
   }
 
@@ -227,6 +228,9 @@ class GroupRow extends Component {
                 <Autocomplete
                     inputProps={{ id: 'states-autocomplete', className: 'form-control'}}
                     wrapperStyle={{ position: 'relative', display: 'inline-block', width: '100%' }}
+                    shouldItemRender={(item, value) => 
+                      item.user_name.toLowerCase().indexOf(value.toLowerCase()) > -1 || item.email.toLowerCase().indexOf(value.toLowerCase()) > -1
+                    }
                     getItemValue={this.getItemValue}
                     items={this.state.autocompleteData}
                     renderItem={this.renderItem}

@@ -59,3 +59,18 @@ export const starAsset = (payload) =>
 	}).catch(error => {
         return error;
     }); 
+
+export const shareAsset = (payload) =>
+	fetch(api+'/api/share_asset', {
+	    method: 'POST',
+	    headers: {
+	    	...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(payload)
+	}).then(res => {
+		return res.json();
+	}).catch(error => {
+        return error;
+    }); 

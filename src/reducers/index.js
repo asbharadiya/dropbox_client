@@ -22,7 +22,8 @@ const reducer = (state = initialState, action) => {
         addAssetToStarredSuccess:undefined,
         removeAssetFromStarredSuccess:undefined,
         addFolderSuccess:undefined,
-        uploadFileSuccess:undefined
+        uploadFileSuccess:undefined,
+        shareAssetSuccess:undefined
       };
     case "GET_ASSETS_FAILURE" :  
       return state;
@@ -34,7 +35,8 @@ const reducer = (state = initialState, action) => {
         addAssetToStarredSuccess:undefined,
         removeAssetFromStarredSuccess:undefined,
         addFolderSuccess:undefined,
-        uploadFileSuccess:undefined
+        uploadFileSuccess:undefined,
+        shareAssetSuccess:undefined
       };
     case "GET_STARRED_ASSETS_FAILURE" :  
       return state;
@@ -46,7 +48,8 @@ const reducer = (state = initialState, action) => {
         addAssetToStarredSuccess:undefined,
         removeAssetFromStarredSuccess:undefined,
         addFolderSuccess:undefined,
-        uploadFileSuccess:undefined
+        uploadFileSuccess:undefined,
+        shareAssetSuccess:undefined
       };
     case "GET_RECENT_ASSETS_FAILURE" :  
       return state;
@@ -74,6 +77,10 @@ const reducer = (state = initialState, action) => {
       } else {
         return {...state,removeAssetFromStarredSuccess:false};
       }
+    case "SHARE_ASSET_SUCCESS" :
+      return {...state,shareAssetSuccess:true};
+    case "SHARE_ASSET__FAILURE" :  
+      return {...state,shareAssetSuccess:false};
     case "DELETE_ASSET_SUCCESS" :
       return {...state,deleteAssetSuccess:true};
     case "DELETE_ASSET_FAILURE" :  
@@ -83,19 +90,36 @@ const reducer = (state = initialState, action) => {
         ...state,
         groups:action.data,
         deleteGroupSuccess:undefined,
-        addGroupSuccess:undefined
+        addGroupSuccess:undefined,
+        updateGroupSuccess:undefined,
+        addRemoveMemberSuccess:undefined
       };
     case "GET_GROUPS_FAILURE" :  
       return state;
     case "ADD_GROUP_SUCCESS" :
-      return {...state,addGroupSuccess:true};
+      return {
+        ...state,
+        addGroupSuccess:true,
+        deleteGroupSuccess:undefined,
+        getGroupByIdSuccess:undefined,
+        updateGroupSuccess:undefined,
+        addRemoveMemberSuccess:undefined
+      };
     case "ADD_GROUP_FAILURE" :  
-      return {...state,addGroupSuccess:false};
+      return {
+        ...state,
+        addGroupSuccess:false,
+        deleteGroupSuccess:undefined,
+        getGroupByIdSuccess:undefined,
+        updateGroupSuccess:undefined,
+        addRemoveMemberSuccess:undefined
+      };
     case "UPDATE_GROUP_SUCCESS" :
       return {
         ...state,updateGroupSuccess:true,
         deleteGroupSuccess:undefined,
         getGroupByIdSuccess:undefined,
+        addGroupSuccess:undefined,
         addRemoveMemberSuccess:undefined
       };
     case "UPDATE_GROUP_FAILURE" :  
@@ -103,6 +127,7 @@ const reducer = (state = initialState, action) => {
         ...state,updateGroupSuccess:false,
         deleteGroupSuccess:undefined,
         getGroupByIdSuccess:undefined,
+        addGroupSuccess:undefined,
         addRemoveMemberSuccess:undefined
       };
     case "DELETE_GROUP_SUCCESS" :
@@ -110,6 +135,7 @@ const reducer = (state = initialState, action) => {
         ...state,deleteGroupSuccess:true,
         updateGroupSuccess:undefined,
         getGroupByIdSuccess:undefined,
+        addGroupSuccess:undefined,
         addRemoveMemberSuccess:undefined
       };
     case "DELETE_GROUP_FAILURE" :  
@@ -117,6 +143,7 @@ const reducer = (state = initialState, action) => {
         ...state,deleteGroupSuccess:false,
         updateGroupSuccess:undefined,
         getGroupByIdSuccess:undefined,
+        addGroupSuccess:undefined,
         addRemoveMemberSuccess:undefined
       };
     case "GET_GROUP_BY_ID_SUCCESS" :
@@ -124,6 +151,7 @@ const reducer = (state = initialState, action) => {
         ...state,getGroupByIdSuccess:true,getGroupByIdData:action.data,
         updateGroupSuccess:undefined,
         deleteGroupSuccess:undefined,
+        addGroupSuccess:undefined,
         addRemoveMemberSuccess:undefined
       };
     case "GET_GROUP_BY_ID_FAILURE" :  
@@ -131,6 +159,7 @@ const reducer = (state = initialState, action) => {
         ...state,getGroupByIdSuccess:false,
         updateGroupSuccess:undefined,
         deleteGroupSuccess:undefined,
+        addGroupSuccess:undefined,
         addRemoveMemberSuccess:undefined
       };
     case "ADD_REMOVE_MEMBER_SUCCESS" :
@@ -138,6 +167,7 @@ const reducer = (state = initialState, action) => {
         ...state,addRemoveMemberSuccess:true,
         updateGroupSuccess:undefined,
         deleteGroupSuccess:undefined,
+        addGroupSuccess:undefined,
         getGroupByIdSuccess:undefined
       };
     case "ADD_REMOVE_MEMBER_FAILURE" :  
@@ -145,6 +175,7 @@ const reducer = (state = initialState, action) => {
         ...state,addRemoveMemberSuccess:false,
         updateGroupSuccess:undefined,
         deleteGroupSuccess:undefined,
+        addGroupSuccess:undefined,
         getGroupByIdSuccess:undefined
       };
     case "UPDATE_USER_PROFILE_SUCCESS" :
