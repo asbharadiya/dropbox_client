@@ -31,3 +31,16 @@ export const getUserProfile = () =>
 	}).catch(error => {
         return error;
     }); 
+
+export const getUserActivity = () =>
+    fetch(api+'/api/user_activity', {
+        method: 'GET',
+        headers: {
+            ...headers
+        },
+        credentials: 'include'
+    }).then(res => {
+        return res.json();
+    }).catch(error => {
+        return error;
+    }); 

@@ -2,6 +2,7 @@
 const initialState= {
   isLogged: undefined,
   uname: "",
+  activity: [],
   assets: [],
   starredAssets: [],
   recentAssets: [],
@@ -193,6 +194,17 @@ const reducer = (state = initialState, action) => {
         updateUserProfileSuccess:undefined
       };
     case "GET_USER_PROFILE_FAILURE" :  
+      return {
+        ...state,
+        updateUserProfileSuccess:undefined
+      };
+    case "GET_USER_ACTIVITY_SUCCESS" :
+      return {
+        ...state,
+        activity:action.data,
+        updateUserProfileSuccess:undefined
+      };
+    case "GET_USER_ACTIVITY_FAILURE" :  
       return {
         ...state,
         updateUserProfileSuccess:undefined

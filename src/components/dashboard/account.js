@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import NotificationSystem from 'react-notification-system';
+import moment from 'moment';
 import RightContent from './rightcontent';
 import * as actions from '../../actions/user';
+
 
 class Account extends Component {
 
@@ -26,6 +28,7 @@ class Account extends Component {
 
   componentDidMount(){
     this.props.getUserProfile();
+    this.props.getUserActivity();
     this.notificationSystem = this.refs.notificationSystem;
   }
 
@@ -151,6 +154,27 @@ class Account extends Component {
             <div className="page-header">
               Activity report
             </div>
+            <div className="row">
+              <div className="col-xs-12">
+                <ul className="activity-list">
+                  {
+                    this.props.activity.length > 0 ? (
+                      this.props.activity.map(function(item,index) {
+                        return (
+                          <li className="activity-item" key={index}>
+                            <span>{item.action} at {moment(item.date).format('MM-DD-YYYY')}</span>
+                          </li>
+                        );
+                      })
+                    ) : (
+                      <li className="activity-item">
+                        <span>No activity</span>
+                      </li> 
+                    )
+                  }
+                </ul>
+              </div>
+            </div>
       		</div>
       		<RightContent pagetype="account"/>
           <NotificationSystem ref="notificationSystem" />
@@ -162,6 +186,7 @@ class Account extends Component {
 function mapStateToProps(state) {
     return {
         profile:state.profile,
+        activity:state.activity,
         updateUserProfileSuccess:state.updateUserProfileSuccess
     };
 }
@@ -169,6 +194,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         getUserProfile : () => dispatch(actions.getUserProfile()),
+        getUserActivity : () => dispatch(actions.getUserActivity()),
         updateUserProfile : (payload) => dispatch(actions.updateUserProfile(payload))
     };
 }

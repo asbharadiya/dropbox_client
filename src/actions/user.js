@@ -43,3 +43,25 @@ export function getUserProfile() {
 	    });
 	};
 }
+
+function getUserActivitySuccess(data) {
+  	return {type: "GET_USER_ACTIVITY_SUCCESS",data}
+}
+
+function getUserActivityFailure(){
+    return {type: "GET_USER_ACTIVITY_FAILURE"}
+}
+
+export function getUserActivity() {
+	return function(dispatch) {
+		return api.getUserActivity().then(response => {
+	    	if(response.status === 200){
+	    		dispatch(getUserActivitySuccess(response.data));
+	    	} else {
+	    		dispatch(getUserActivityFailure());
+	    	}
+	    }).catch(error => {
+	      	dispatch(getUserActivityFailure());
+	    });
+	};
+}
